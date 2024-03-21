@@ -15,6 +15,7 @@ use App\Http\Controllers\StokController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/login', [UserController::class, 'index'])->name('login');
+Route::post('/login/cek', [UserController::class, 'cekLogin'])->name('cekLogin');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/', [HomeController::class, 'index']);
 Route::resource('pemesanan', PemesananController::class);
 
 Route::resource('karyawan', KaryawanController::class);
@@ -85,9 +92,7 @@ Route::post('produk_titipan/import', [ProdukTitipanController::class, 'importDat
 Route::resource('transaksi', TransaksiController::class);
 Route::get('nota/{nofaktur}', [TransaksiController::class, 'faktur']);
 
-Route::get('/login', [UserController::class, 'index'])->name('login');
-// Route::post('/login/cek', [UserController::class, 'cekLogin'])->name('cekLogin');
-// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-
 Route::resource('tentang', TentangController::class);
 Route::resource('laporan', LaporanController::class);
+
+});

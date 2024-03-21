@@ -279,6 +279,12 @@
                             <span class="menu-title">Laporan Produk</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ url('logout') }}" class="nav-link">
+                            <i class="fas fa-store menu-icon"></i>
+                            <span class="menu-title">Logout</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- partial -->

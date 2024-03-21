@@ -26,11 +26,10 @@
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="/" method="post" novalidated>
+                <form action="{{ route('cekLogin') }}" method="post" novalidated>
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email"
-                            class="form-control
+                        <input type="email" class="form-control
                         @error('email')
                             is-invalid
                         @enderror
@@ -49,8 +48,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password"
-                            class="form-control
+                        <input type="password" class="form-control
                          @error('password')
                          is-invalid
                          @enderror
@@ -91,6 +89,12 @@
                     <a href="forgot-password.html">I forgot my password</a>
                 </p>
             </div>
+            {{-- @error('nofound')
+            <div class="row mb-2">
+                <div class="col-12 text-center text-danger">
+                    {{ $message }}
+                </div>
+            </div> --}}
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
