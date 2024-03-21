@@ -24,7 +24,7 @@ class StoreMenuRequest extends FormRequest
         return [
             'name' => ['required','string'],
             'harga' => ['required'],
-            // 'image' => ['required', 'string'],
+            'image' => ['required', 'string'],
             'deskripsi'=> ['required', 'string'],
             'jenis_id' => ['required','string']
          ];
@@ -34,7 +34,7 @@ class StoreMenuRequest extends FormRequest
         return[
         'name.required' => 'Data name belum diisi!',
         'harga.required'=>'Data Harga belum diisi!',
-        // 'image.required'=>'Data Image belum diisi',
+        'image.required'=>'Data Image belum diisi',
         'deskripsi.required'=>'Deskripsi belum diisi!',
         'jenis_id.required'=>'Jenis belum diisi'
         ];

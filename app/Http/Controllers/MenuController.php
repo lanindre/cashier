@@ -57,7 +57,14 @@ class MenuController extends Controller
         try {
             DB::beginTransaction();
             $validated = $request->validated();
+            $menu = Menu::create($request->all());
+            $file = $request->file('image');
 
+            $file_name = $file->getClientOriginalName();
+            $file_path = $file->storeAs('menu', $file_name);
+
+            $menu->image = $file_path;
+            $menu->save();
             DB::table('menu')->insert($validated);
             DB::commit(); //nyimpan data ke database
 

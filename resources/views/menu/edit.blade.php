@@ -26,13 +26,13 @@
                                 placeholder="Harga" name="harga">
                         </div>
                     </div>
-                    {{-- <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label">Image</label>
-                        <div class="col-sm-8">
-                            <input type="file" class="form-control" id="image" value=""
-                                name="image">
-                        </div>
-                    </div> --}}
+                    <div class="form-group row"> 
+                        <label for="image" class="col-sm-4 col-form-label">image</label> 
+                        <div class="col-sm-8"> 
+                            <input type="text" class="form-control" id="image" placeholder="image" 
+                                name="image"> 
+                        </div> 
+                    </div>
                     <div class="form-group row">
                         <label for="name" class="col-sm-4 col-form-label">Deskripsi</label>
                         <div class="col-sm-8">

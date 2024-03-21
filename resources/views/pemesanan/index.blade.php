@@ -27,6 +27,7 @@
                                     <ul class="menu-item">
                                         @foreach ($j->menu as $menu)
                                             <li data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}">
+                                                <img src="{{asset('storage/'.$menu->image)}}" class="ms-auto mt-2 img-fluid" alt="" style="width: 80px;">
                                                 {{ $menu->name }}
                                             </li>
                                         @endforeach

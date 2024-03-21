@@ -4,7 +4,7 @@
             <th>No.</th>
             <th>Nama Menu</th>
             <th>Harga</th>
-            {{-- <th>Image</th> --}}
+            <th>Image</th>
             <th>Deskripsi</th>
             <th>Nama Jenis</th>
             <th>Action</th>
@@ -16,7 +16,7 @@
                 <td>{{ $i = !isset($i) ? ($i = 1) : ++$i }}</td>
                 <td>{{ $p->name }}</td>
                 <td>{{ $p->harga }}</td>
-                {{-- <td>{{ $p->image }}</td> --}}
+                <td><img src="{{ asset('storage/'.$p->image) }}" alt="image" style="width: 60px; height: 60px;"></td>
                 <td>{{ $p->deskripsi }}</td>
                 <td>{{ $p->jenis->name }}</td>
                 <td>
