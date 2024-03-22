@@ -59,7 +59,7 @@ class KaryawanController extends Controller
             $foto = $request->file('foto');
             // Storage::put('foto'.$request->file('foto'));
             DB::table('karyawan')->insert($validated);
-            $foto->storeAs('foto', $foto->getClientOriginalName());
+            $foto->storeAs('karyawan', $foto->getClientOriginalName());
             DB::commit(); //nyimpan data ke database
 
             //untuk me-refresh ke halaman itu kembali melihat input 

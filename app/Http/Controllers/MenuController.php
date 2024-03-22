@@ -56,16 +56,16 @@ class MenuController extends Controller
 
         try {
             DB::beginTransaction();
-            $validated = $request->validated();
             $menu = Menu::create($request->all());
             $file = $request->file('image');
 
-            $file_name = $file->getClientOriginalName();
-            $file_path = $file->storeAs('menu', $file_name);
+            // Menyimpan file gambar ke direktori penyimpanan 'menu' dengan nama yang unik
+            $file_name = $file->getClientOriginalName(); // Nama file asli
+            $file_path = $file->storeAs('menu', $file_name); // Simpan file dengan nama unik di direktori 'menu'
 
+            // Simpan nama file ke dalam kolom image di database
             $menu->image = $file_path;
             $menu->save();
-            DB::table('menu')->insert($validated);
             DB::commit(); //nyimpan data ke database
 
             //untuk me-refresh ke halaman itu kembali melihat input 

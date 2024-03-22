@@ -20,21 +20,22 @@
                         <input type="text" class="form-control" id="nama_pemesan" name='nama_pemesan'>
                     </div> --}}
                     <div class="item-sidebar">
-                        <ul class="menu-container">
+                        <div class="menu-container px-1" style="overflow: hidden">
                             @foreach ($jenis as $j)
-                                <li>
-                                    <h3>{{ $j->name }}</h3>
-                                    <ul class="menu-item">
-                                        @foreach ($j->menu as $menu)
-                                            <li data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}">
-                                                <img src="{{asset('storage/'.$menu->image)}}" class="ms-auto mt-2 img-fluid" alt="" style="width: 80px;">
-                                                {{ $menu->name }}
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
+                                <h3>{{ $j->name }}</h3>
+                                <div class="row px-3 ">
+                                    @foreach ($j->menu as $menu)
+                                        <div class="col-md-3 rounded mx-1 my-2 menu-item" data-id="{{ $menu->id }}" data-nama="{{ $menu->name }}" data-harga="{{ $menu->harga }}" style="background-color: #e4fdf9">
+                                            <div class="d-flex flex-column align-items-center justify-content-between" style="height: 100%;">
+                                                <img src="{{ asset('storage/'.$menu->image) }}" class="ms-auto mt-2 img-fluid rounded-circle" alt="" style="width: 80px; height: 80px; border-radius: 50%;">
+                                                <h4 class="text-center mt-3 menu">{{ $menu->name }}</h4>
+                                                <p class="text-center">Rp. <span>{{ $menu->harga }}</span></p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             @endforeach
-                        </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="item-content col-md-4">
@@ -42,14 +43,12 @@
                     <ul class="ordered-list">
 
                     </ul>
-                    Total Bayar : <h2 id="total">0</h2>
-                    <div>
-                        <button id="btn-bayar">Bayar</button>
-                    </div>
+                    Total Bayar : <h2>Rp. <span id="total"></span></h2>
+                    <button class="btn btn-primary col-md-3" id="btn-bayar">Bayar</button>
                 </div>
             </div>
             </div>
-           <footer class="fixed bottom"></footer>
+            <footer class="fixed bottom"></footer>
         </main><!-- End #main -->
     </section>
 @endsection
@@ -122,13 +121,13 @@
 
             const changeQty = (el, inc) => {
 
-                const id = $(el).closest('li')[0].dataset.id;
+                const id = $(el).closest('.li')[0].dataset.id;
                 const index = orderedList.findIndex(list => list.menu_id == id)
                 // console.log(index)
                 orderedList[index].qty += orderedList[index].qty == 1 && inc == -1 ? 0 : inc
 
-                const txt_subtotal = $(el).closest('li').find('.subtotal')[0];
-                const txt_qty = $(el).closest('li').find('.qty-item')[0]
+                const txt_subtotal = $(el).closest('.li').find('.subtotal')[0];
+                const txt_qty = $(el).closest('.li').find('.qty-item')[0]
                 txt_qty.value = parseInt(txt_qty.value) == 1 && inc == -1 ? 1 : parseInt(txt_qty.value) + inc
                 txt_subtotal.innerHTML = orderedList[index].harga * orderedList[index].qty;
 
@@ -145,7 +144,7 @@
             })
 
             $('.ordered-list').on('click', '.remove-item', function() {
-                const item = $(this).closest('li')[0];
+                const item = $(this).closest('.li')[0];
                 let index = orderedList.findIndex(list => list.id == parseInt(item.dataset.id))
                 orderedList.splice(index, 1)
                 $(item).remove();
@@ -172,7 +171,7 @@
                             denyButtonText: `Ok`
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.open("{{ url('nota') }}/"+data.noTrans)
+                                window.open("{{ url('nota') }}/" + data.noTrans)
                                 location.reload()
                             } else if (result.isDenied) {
                                 location.reload()
@@ -185,38 +184,34 @@
                     }
                 })
             })
-            $(".menu-item li").click(function(e) {
-                const menu_clicked = $(this).text();
-                const data = $(e.target);
+            $(".menu-item").click(function(e) {
+                const nama = $(this).data('nama');
+                const data = $(this)[0].dataset;
+                // const harga = parseFloat($(this).data('harga'));
+                const harga = parseFloat(data.harga);
+                const id = parseInt(data.id);
 
-                const harga = parseFloat($(data).data('harga'));
-                const id = parseInt($(data).data('id'));
-
-                // let qty = 3
-                // let subTotal = parseFloat(harga)* qty
                 if (orderedList.every(list => list.menu_id !== id)) {
                     let dataN = {
                         'menu_id': id,
-                        'menu': menu_clicked,
+                        'menu': nama,
                         'harga': harga,
                         'qty': 1
                     }
-
                     orderedList.push(dataN);
-                    console.log(orderedList)
-                    let listOrder = `<li data-id="${id}"><h3>${menu_clicked}</h3>`
-                    listOrder += 'sub Total : Rp. ' + harga
-                    listOrder += `<button class='remove-item'>hapus</button>
-                                  <button class="btn-dec"> - </button>`
-                    listOrder += `<input class="qty-item"
-                                         type="number"
-                                         value="1"
-                                         style="width:40px"
-                                         readonly
-                                         />
-                                <button class="btn-inc"> + </button><h2>
-                                <span class="subtotal">${harga * 1}</span>
-                                </li>`
+
+                    let listOrder = `<div class="card p-2 my-2 li" data-id="${id}" style="border-left: 8px solid #7070f8;">
+                                    <div class="d-flex justify-content-between">
+                                        <h3>${nama}</h3>
+                                        <input class="qty-item" type="number" value="1" style="width:40px;height: 25px;border: none; outline: none;" readonly/>
+                                        <div class="d-flex">
+                                            <button class="btn btn-danger ms-auto p-0 remove-item" style="width: 25px"><i class="fa fa-trash"></i></button>
+                                               <button class="btn btn-primary ms-auto p-0 btn-dec" style="width: 25px"><i class="fa fa-minus"></i></button>
+                                            <button class="btn btn-primary ms-auto p-0 btn-inc" style="width: 25px"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <p>Rp. <span class="subtotal">${harga * 1}</span></p>
+                                </div>`;
                     $('.ordered-list').append(listOrder)
                 }
                 $('#total').html(sum())
@@ -226,40 +221,14 @@
     </script>
 @endpush
 <style>
-    .menu-container {
-        list-style-type: none;
+    .menu-item h4.menu::after {
+        content: '';
+        position: absolute;
+        /* background: #000; */
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
     }
-
-    .menu-container li {
-        margin-bottom: 20px;
-    }
-
-    .menu-container li h3 {
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 18px;
-        background-color: pink;
-        padding: 5px 15px;
-        text-align: center;
-        /*margin bottom: 10px;*/
-    }
-
-    .menu-item {
-        list-style-type: none;
-        display: flex;
-        gap: 1em;
-        margin: 5px 10px;
-        font-family: monospace;
-    }
-
-    .menu-item li {
-        background-color: rosybrown;
-        padding: 10px 20px;
-    }
-
-    .item-content ul {
-        background: whitesmoke;
-
-    }
-
 </style>

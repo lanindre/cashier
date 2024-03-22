@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action={{ route('menu.store') }}>
+                <form method="post" action={{ route('menu.store') }} enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <label for="name" class="col-sm-4 col-form-label">Nama Menu</label>

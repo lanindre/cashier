@@ -46,7 +46,7 @@ public function cekLogin(AuthRequest $request)
 }
 
  public function logout(Request $request){
-  Auth::login();
+  Auth::logout();
   $request->session()->invalidate();
   $request->session()->regenerateToken();
 

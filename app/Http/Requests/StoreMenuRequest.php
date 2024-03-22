@@ -24,7 +24,7 @@ class StoreMenuRequest extends FormRequest
         return [
             'name' => ['required','string'],
             'harga' => ['required'],
-            'image' => ['required', 'string'],
+            'image' => ['required', 'image'],
             'deskripsi'=> ['required', 'string'],
             'jenis_id' => ['required','string']
          ];
