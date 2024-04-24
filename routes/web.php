@@ -1,6 +1,7 @@
 <?php
 
 use App\Exports\PelangganExport;
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisController;
 use App\Http\Controllers\KaryawanController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\StokController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -60,7 +62,7 @@ Route::post('jenis/import', [JenisController::class, 'importData'])->name('bebek
 
 Route::resource('menu', MenuController::class);
 Route::get('export/menu', [MenuController::class, 'exportData'])->name('D');
-Route::get('generate/menu', [MenuController::class, 'generatepdf'])->name('E');
+Route::get('generate/menu', [MenuController::class, 'generatePdf'])->name('E');
 Route::post('menu/import', [MenuController::class, 'importData'])->name('F');
 
 Route::resource('stok', StokController::class);
@@ -78,21 +80,30 @@ Route::get('export/meja', [MejaController::class, 'exportData'])->name('M');
 Route::get('generate/meja', [MejaController::class, 'generatepdf'])->name('N');
 Route::post('meja/import', [MejaController::class, 'importData'])->name('O');
 
+Route::resource('absensi', AbsensiController::class);
+Route::get('export/absensi', [AbsensiController::class, 'exportData'])->name('l');
+Route::get('generate/absensi', [AbsensiController::class, 'generatepdf'])->name('m');
+Route::post('absensi/import', [AbsensiController::class, 'importData'])->name('b');
+Route::post('update-status', [AbsensiController::class, 'updateStatus']);
+
 Route::resource('pemesanan', PemesananController::class);
 Route::get('export/pemesanan', [PemesananController::class, 'exportData'])->name('P');
 Route::get('generate/pemesanan', [PemesananController::class, 'generatepdf'])->name('Q');
 Route::post('pemesanan/import', [PemesananController::class, 'importData'])->name('R');
 
-Route::resource('produk_titipan', ProdukTitipanController::class);
-Route::put('/produk_titipan/{id}/update-stok', 'ProdukTitipanController@updateStok')->name('produk_titipan.update-stok');
-Route::get('export/produk_titipan', [ProdukTitipanController::class, 'exportData'])->name('Z');
-Route::get('generate/produk_titipan', [ProdukTitipanController::class, 'generatepdf'])->name('Y');
-Route::post('produk_titipan/import', [ProdukTitipanController::class, 'importData'])->name('X');
+// Route::resource('produk_titipan', ProdukTitipanController::class);
+// Route::put('/produk_titipan/{id}/update-stok', 'ProdukTitipanController@updateStok')->name('produk_titipan.update-stok');
+// Route::get('export/produk_titipan', [ProdukTitipanController::class, 'exportData'])->name('Z');
+// Route::get('generate/produk_titipan', [ProdukTitipanController::class, 'generatepdf'])->name('Y');
+// Route::post('produk_titipan/import', [ProdukTitipanController::class, 'importData'])->name('X');
 
 Route::resource('transaksi', TransaksiController::class);
 Route::get('nota/{nofaktur}', [TransaksiController::class, 'faktur']);
 
 Route::resource('tentang', TentangController::class);
 Route::resource('laporan', LaporanController::class);
+
+
+Route::resource('contact', ContactController::class);
 
 });

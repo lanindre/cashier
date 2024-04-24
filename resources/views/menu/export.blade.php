@@ -2,6 +2,10 @@
     <thead>
         <tr>
             <th>No.</th>
+            <th>Nama Menu</th>
+            <th>Harga</th>
+            <th>Image</th>
+            <th>Deskripsi</th>
             <th>Nama Jenis</th>
         </tr>
     </thead>
@@ -10,13 +14,17 @@
             <tr>
                 <td>{{ $i = !isset($i) ? ($i = 1) : ++$i }}</td>
                 <td>{{ $p->name }}</td>
+                <td>Rp.{{ $p->harga }}</td>
+                <td>{{ $p->Image }}</td>
+                <td>{{ $p->deskripsi }}</td>
+                <td>{{ $p->jenis->name }}</td>
+            </tr>
         @endforeach
     </tbody>
 </table>
-
 <style>
-    /* Style untuk judul tabel */
-    #data {
+     /* Style untuk judul tabel */
+     #data {
         font-family: Arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
@@ -41,6 +49,3 @@
         background-color: #ffffff;
     }
 </style>
-
-
-

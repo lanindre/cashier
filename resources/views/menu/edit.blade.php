@@ -19,17 +19,28 @@
                                 placeholder="Nama menu" name="name">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label for="name" class="col-sm-4 col-form-label">Harga</label>
                         <div class="col-sm-8">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
                             <input type="text" class="form-control" id="harga" value=""
                                 placeholder="Harga" name="harga">
                         </div>
+                    </div> --}}
+                    <div class="input-group mb-4">
+                        <label for="name" class="col-sm-4 col-form-label">Harga</label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input type="text" class="form-control" id="harga" value=""
+                                placeholder="Harga" name="harga">
                     </div>
                     <div class="form-group row"> 
                         <label for="image" class="col-sm-4 col-form-label">image</label> 
                         <div class="col-sm-8"> 
-                            <input type="text" class="form-control" id="image" placeholder="image" 
+                            <input type="file" class="form-control" id="image" placeholder="image" 
                                 name="image"> 
                         </div> 
                     </div>
@@ -44,13 +55,11 @@
                         <label for="jenis_id" class="col-sm-4 col-form-label">Nama Jenis</label>
                         <div class="col-sm-8">
                             <select  class="form-control" name="jenis_id" id="jenis_id">
-                                <option selected disabled>Nama Jenis</option>
+                                <option selected disabled>Pilih Jenis</option>
                                 @foreach ($jenis as $j => $label)
                                     <option value="{{ $j }}">{{ $label }}</option>
                                 @endforeach
                             </select>
-                            {{-- <input type="text" class="form-control" id="inputEmail13" placeholder="Jenis Barang"
-                                name="produk_id"> --}}
                         </div>
                     </div>
             </div>

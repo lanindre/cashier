@@ -118,6 +118,25 @@ class MenuController extends Controller
         } catch (\Exception $error) {
             return redirect()->back()->withErrors(['message' => $error->getMessage()]);
         };
+
+    //     $menu->update($request->all());
+
+    //     if ($request->hasFile('image')) {
+    //         $file = $request->file('image');
+
+    //         if ($file->isValid()) {
+    //             $file_name = $file->getClientOriginalName(); //nama file asli
+    //             $file_path = $file->storeAs('ya', $file_name); //nama file asli
+
+    //             $menu->image = $file_path;
+    //             $menu->save();
+    //             return redirect('menu')->with('success', 'Update data berhasil!');
+    //         } else {
+    //             return redirect('menu')->with('error', 'Gagal mengupdate data gambar!');
+    //         }
+    //     } else {
+    //         return redirect('menu')->with('error', 'Tidak ada gambar yang diunggah');
+    //     }
     }
 
     /**
@@ -140,10 +159,10 @@ class MenuController extends Controller
         $date = date('Y-m-d');
         return Excel::download(new MenuExport, $date . 'menu.xlsx');
     }
-    public function generatepdf()
+    public function generatePdf()
     {
         $menu = Menu::all();
-        $pdf = Pdf::loadView('menu.data', compact('menu'));
+        $pdf = Pdf::loadView('menu.export', compact('data'));
         return $pdf->download('menu.pdf');
     }
 

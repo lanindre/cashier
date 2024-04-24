@@ -18,13 +18,22 @@
                                 placeholder="Nama Menu" name="name">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="input-group mb-4">
                         <label for="name" class="col-sm-4 col-form-label">Harga</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputEmail13" value=""
-                                placeholder="Harga" name="harga">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
                         </div>
+                        <input type="text" class="form-control" id="inputEmail13" value=""
+                                placeholder="Harga" name="harga">
                     </div>
+                    {{-- <div class="input-group mb-4">
+                        <label for="name" class="col-sm-4 col-form-label">Harga</label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                            <input type="number" class="form-control" id="harga" placeholder="harga"
+                            name="harga">
+                    </div> --}}
                     <div class="form-group row"> 
                         <label for="image" class="col-sm-4 col-form-label">image</label> 
                         <div class="col-sm-8"> 

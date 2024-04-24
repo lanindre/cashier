@@ -11,7 +11,7 @@ class StoreAbsensiRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,21 @@ class StoreAbsensiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'namaKaryawan' => ['required','string'],
+            'tanggalMasuk' => ['required'],
+            'waktuMasuk' => ['required'],
+            'status' => ['required', 'in:masuk,cuti,izin'],
+            // 'waktuKeluar'=> ['required']
+         ];
+    }
+    public function messages()
+    {
+        return[
+        'namaKaryawan.required' => 'Data  Nama Karyawan belum diisi!',
+        'tanggalMasuk.required'=>'Data tanggal masuk belum diisi!',
+        'waktuMasuk.required'=>'Data waktu Masuk belum diisi',
+        'status.required'=>'status belum diisi!',
+        // 'waktuKeluar.required'=>'waktu keluar belum diisi',
         ];
     }
 }

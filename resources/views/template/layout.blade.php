@@ -207,12 +207,12 @@
                             <span class="menu-title">Dashboard <span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ url('karyawan') }}" class="nav-link">
                             <i class=" typcn typcn-user-add menu-icon"></i>
                             <span class="menu-title">Karyawan</span>
                         </a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item">
                         <a href="{{ url('kategori') }}" class="nav-link">
                             <i class="typcn typcn-device-desktop menu-icon"></i>
@@ -231,30 +231,30 @@
                             <span class="menu-title">Menu</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ url('stok') }}" class="nav-link">
                             <i class="fas fa-store menu-icon"></i>
                             <span class="menu-title">Stok</span>
                         </a>
-                    </li>
-                    <li class="nav-item">
+                    </li> --}}
+                    {{-- <li class="nav-item">
                         <a href="{{ url('pelanggan') }}" class="nav-link">
                             <i class="typcn typcn-user menu-icon"></i>
                             <span class="menu-title">Pelanggan</span>
                         </a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item">
                         <a href="{{ url('transaksi') }}" class="nav-link">
                             <i class=" fas fa-cash-register menu-icon"></i>
                             <span class="menu-title">Transaksi</span>
                         </a>
                     </li> --}}
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ url('meja') }}" class="nav-link">
                             <i class="fas fa-bell menu-icon"></i>
                             <span class="menu-title">Meja</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="{{ url('pemesanan') }}" class="nav-link">
                             <i class="typcn typcn-tag menu-icon"></i>
@@ -262,26 +262,33 @@
                         </a>
                     </li>
                     {{-- <li class="nav-item">
-                        <a href="{{ url('produk_titipan') }}" class="nav-link">
+                        <a href="{{ url('absensi') }}" class="nav-link">
                             <i class="fas fa-store menu-icon"></i>
-                            <span class="menu-title">Produk Titipan</span>
+                            <span class="menu-title">Absensi</span>
                         </a>
                     </li> --}}
-                    <li class="nav-item">
-                        <a href="{{ url('tentang') }}" class="nav-link">
-                            <i class=" typcn typcn-tag menu-icon"></i>
-                            <span class="menu-title">Tentang Aplikasi</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ url('laporan') }}" class="nav-link">
                             <i class="fas fa-store menu-icon"></i>
                             <span class="menu-title">Laporan Produk</span>
                         </a>
+                    </li> --}}
+                    {{-- <li class="nav-item">
+                        <a href="{{ url('tentang') }}" class="nav-link">
+                            <i class=" typcn typcn-tag menu-icon"></i>
+                            <span class="menu-title">Tentang Aplikasi</span>
+                        </a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a href="{{ url('contact') }}" class="nav-link">
+                            <i class=" typcn typcn-tag menu-icon"></i>
+                            <span class="menu-title">Contact Us</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('logout') }}" class="nav-link">
-                            <i class="fas fa-store menu-icon"></i>
+                            {{-- <i class="fas fa-store menu-icon"></i> --}}
+                            <i class="fas fa-arrow-right-from-bracket"></i>
                             <span class="menu-title">Logout</span>
                         </a>
                     </li>

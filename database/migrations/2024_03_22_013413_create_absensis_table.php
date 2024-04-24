@@ -16,9 +16,9 @@ return new class extends Migration
             $table->id();
             $table->string('namaKaryawan');
             $table->date('tanggalMasuk');
-            $table->time('waktuMasuk');
+            $table->time('waktuMasuk')->nullable();
             $table->enum('status', ['masuk', 'cuti', 'izin']);
-            $table->time('waktuKeluar');
+            $table->time('waktuKeluar')->nullable();
             $table->timestamps();
         });
     }

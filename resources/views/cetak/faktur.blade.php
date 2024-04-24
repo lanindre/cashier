@@ -54,6 +54,7 @@ tfoot td {
                 <td>Qty</td>
                 <td>Item</td>
                 <td>Harga</td>
+                {{-- <td>Deskripsi</td> --}}
                 <td>Total</td>
             </tr>
         </thead>
@@ -63,6 +64,7 @@ tfoot td {
                 <td>{{ $item->jumlah }}</td>
                 <td>{{ $item->menu->name }}</td>
                 <td>{{ number_format($item->menu->harga, 0, ",", ".") }}</td>
+                {{-- <td>{{ $item->deskripsi }}</td> --}}
                 <td>{{ number_format($item->subtotal, 0, ",", ".") }}</td>
             </tr>
             @endforeach

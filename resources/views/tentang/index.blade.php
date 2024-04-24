@@ -17,27 +17,23 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title" style="text-align: center">Tentang Aplikasi</h3>
-                    <div style="text-align: center;">
-                        <h5 style="text-align: left">
-                            Bakso Coffe By Wulan Indah Restiani
-                        </h5>
-                        <p style="text-align: left">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias voluptatum tempora consectetur
-                            architecto
-                            dolore? Tempore maxime repudiandae aut deserunt! Cumque praesentium, dolores repudiandae
-                            deleniti
-                            est
-                            quis, ipsam assumenda soluta molestias sed dolorum animi doloribus doloremque totam ab possimus
-                            laboriosam. A illum dolor iusto vero quasi minima nobis animi tenetur perferendis quaerat,
-                            debitis
-                            veritatis! Quidem maxime laborum, obcaecati reiciendis mollitia ducimus, velit tempore debitis
-                            doloremque vero, sit fugiat! Ipsa alias autem minus suscipit magnam sed fuga aperiam quibusdam?
-                            Laboriosam veritatis dolores inventore aspernatur, iste dolor, ducimus sed mollitia eveniet, in
-                            eius
-                            architecto tenetur vel cumque? Nisi voluptatum voluptas optio est nostrum?
-                        </p>
-                    </div>
+                    <h1 style="text-align: center;">Informasi Aplikasi Kasir</h1>
+        <p>Aplikasi ini adalah sistem kasir yang dikembangkan menggunakan Laravel untuk mempermudah pengelolaan transaksi penjualan.</p>
+        
+        <h2>Fitur Utama:</h2>
+        <ul>
+            <li>Manajemen produk</li>
+            <li>Transaksi penjualan</li>
+            <li>Laporan penjualan</li>
+            <li>Integrasi pembayaran</li>
+        </ul>
+        
+        <h2>Teknologi yang Digunakan:</h2>
+        <ul>
+            <li>Laravel PHP Framework</li>
+            <li>MySQL Database</li>
+            <li>HTML, CSS, JavaScript</li>
+        </ul>
         </body>
         <footer style="text-align: center;">
             <span style="display: inline-block;  font-size: 2.5em; fixed-bottom">

@@ -24,7 +24,7 @@ class UpdateMenuRequest extends FormRequest
         return [
             'name' => 'required|string',
             'harga' => 'required',
-            // 'image' => 'required|string',
+            'image' => 'required|string',
             'deskripsi'=> 'required|string',
             'jenis_id'=> 'required|string'
         ];

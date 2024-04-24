@@ -22,12 +22,17 @@
                     <div class="item-sidebar">
                         <div class="menu-container px-1" style="overflow: hidden">
                             @foreach ($jenis as $j)
-                                <h3>{{ $j->name }}</h3>
+                                <h3 class="p">{{ $j->name }}</h3>
                                 <div class="row px-3 ">
                                     @foreach ($j->menu as $menu)
-                                        <div class="col-md-3 rounded mx-1 my-2 menu-item" data-id="{{ $menu->id }}" data-nama="{{ $menu->name }}" data-harga="{{ $menu->harga }}" style="background-color: #e4fdf9">
-                                            <div class="d-flex flex-column align-items-center justify-content-between" style="height: 100%;">
-                                                <img src="{{ asset('storage/'.$menu->image) }}" class="ms-auto mt-2 img-fluid rounded-circle" alt="" style="width: 80px; height: 80px; border-radius: 50%;">
+                                        <div class="col-md-3 rounded mx-1 my-2 menu-item" data-id="{{ $menu->id }}"
+                                            data-nama="{{ $menu->name }}" data-harga="{{ $menu->harga }}"
+                                            style="background-color: #e4fdf9">
+                                            <div class="d-flex flex-column align-items-center justify-content-between"
+                                                style="height: 100%;">
+                                                <img src="{{ asset('storage/' . $menu->image) }}"
+                                                    class="ms-auto mt-2 img-fluid rounded-circle" alt=""
+                                                    style="width: 80px; height: 80px; border-radius: 50%;">
                                                 <h4 class="text-center mt-3 menu">{{ $menu->name }}</h4>
                                                 <p class="text-center">Rp. <span>{{ $menu->harga }}</span></p>
                                             </div>
@@ -44,68 +49,16 @@
 
                     </ul>
                     Total Bayar : <h2>Rp. <span id="total"></span></h2>
+                    {{-- <textarea class="form-control" id="deskripsi" rows="3" placeholder="Tambahkan catatan"></textarea> --}}
                     <button class="btn btn-primary col-md-3" id="btn-bayar">Bayar</button>
                 </div>
             </div>
+            <footer class="fixed-bottom"></footer>
             </div>
-            <footer class="fixed bottom"></footer>
         </main><!-- End #main -->
     </section>
 @endsection
 @push('script')
-    {{-- <script>
-        $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
-            $('.alert-success').slideUp(500)
-        })
-
-        $('.alert-danger').fadeTo(2000, 500).slideUp(500, function() {
-            $('.alert-danger').slideUp(500)
-        })
-
-        $(function() {
-
-            // dialog hapus data
-            $('.btn-delete').on('click', function(e) {
-                let nama = $(".pemesanan" + $(this).attr('data-id')).text()
-                console.log(nama)
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Hapus Data',
-                    html: `Apakah data akan dihapus?`,
-                    confirmButtonText: 'Ya',
-                    denyButtonText: 'Tidak',
-                    showDenyButton: true,
-                    focusConfirm: false
-                }).then((result) => {
-                    if (result.isConfirmed) $(e.target).closest('form').submit()
-                    else swal.close()
-                })
-            })
-        })
-    </script>
-    <script>
-        let table = new DataTable('#myTable');
-    </script>
-    <script>
-        $(document).ready(function() {
-
-            $('#editModal').on('show.bs.modal', function(e) {
-                console.log('oke')
-                let button = $(e.relatedTarget)
-                let jsonObject = JSON.stringify(button.data('json'))
-                let items = JSON.parse(jsonObject)
-                console.log(items)
-                $('#meja_id').val(items.meja_id)
-                $('#tanggal_pemesanan').val(items.tanggal_pemesanan)
-                $('#jam_mulai').val(items.jam_mulai)
-                $('#jam_selesai').val(items.jam_selesai)
-                $('#nama_pemesan').val(items.nama_pemesan)
-                $('#jumlah_pelanggan').val(items.jumlah_pelanggan)
-                $('.form-edit').attr('action', `/pemesanan/${items.id}`)
-            })
-        })
-    </script> --}}
-
     <script>
         // alert("Hello World");
         $(function() {
@@ -190,6 +143,7 @@
                 // const harga = parseFloat($(this).data('harga'));
                 const harga = parseFloat(data.harga);
                 const id = parseInt(data.id);
+                // const deskripsi = $('#deskripsi').val();
 
                 if (orderedList.every(list => list.menu_id !== id)) {
                     let dataN = {
@@ -197,6 +151,7 @@
                         'menu': nama,
                         'harga': harga,
                         'qty': 1
+                        // 'deskripsi': deskripsi
                     }
                     orderedList.push(dataN);
 
@@ -230,5 +185,11 @@
         right: 0;
         bottom: 0;
         left: 0;
+    }
+
+    .p{
+        text-align: center;
+        background-color: skyblue;
+        font-size: 20px;
     }
 </style>
