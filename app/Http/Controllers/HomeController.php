@@ -61,6 +61,18 @@ class HomeController extends Controller
         $transaksi = Transaksi::get();
         $data['countra'] = $transaksi->count();
        $data['pendapatan'] = $transaksi->sum('total_harga');
+
+       // Biaya-biaya tetap (misalnya biaya produksi atau pembelian bahan baku)
+        $biayaProduksi = 1000; // Contoh biaya produksi sebesar 1000
+
+        // Hitung total biaya produksi dari semua transaksi
+      $totalBiayaProduksi = $transaksi->count() * $biayaProduksi;
+
+        // Hitung laba rugi
+        $labaRugi = $data['pendapatan'] - $totalBiayaProduksi;
+
+        $data['labaRugi'] = $labaRugi;
+        
          
        //transaksi terbaru
        $data['transaksi_terbaru'] = Transaksi::with('detailTransaksi')->latest()->take(5)->get();

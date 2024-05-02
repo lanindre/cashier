@@ -22,7 +22,12 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $laporan = Transaksi::select('id', 'tanggal', 'total_harga')->orderBy('tanggal', 'desc')->get();
+            return view('laporan.index', compact('laporan'));
+        } catch (Exception | QueryException | PDOException $e) {
+            return response()->json(['status' => false, 'message' => 'Gagal memuat laporan']);
+        }
     }
 
     /**

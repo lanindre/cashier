@@ -269,18 +269,18 @@
                             <span class="menu-title">Absensi</span>
                         </a>
                     </li> --}}
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ url('laporan') }}" class="nav-link">
                             <i class="fas fa-store menu-icon"></i>
                             <span class="menu-title">Laporan</span>
                         </a>
-                    </li>
-                    {{-- <li class="nav-item">
+                    </li> --}}
+                    <li class="nav-item">
                         <a href="{{ url('tentang') }}" class="nav-link">
                             <i class=" typcn typcn-tag menu-icon"></i>
                             <span class="menu-title">Tentang Aplikasi</span>
                         </a>
-                    </li> --}}
+                    </li>
                     <li class="nav-item">
                         <a href="{{ url('contact') }}" class="nav-link">
                             <i class=" typcn typcn-tag menu-icon"></i>
@@ -334,6 +334,12 @@
                         <a href="{{ url('pemesanan') }}" class="nav-link">
                             <i class="typcn typcn-tag menu-icon"></i>
                             <span class="menu-title">Pemesanan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('tentang') }}" class="nav-link">
+                            <i class=" typcn typcn-tag menu-icon"></i>
+                            <span class="menu-title">Tentang Aplikasi</span>
                         </a>
                     </li>
                     <li class="nav-item">

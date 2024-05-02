@@ -166,9 +166,9 @@
                         <p>Rp {{ number_format($pendapatan, 2) }}</p>
                     </div>
                     <div class="stat-box">
-                        <h3>Jumlah terjual hari ini </h3>
-                        <div class="countra">
-                            {{ $countra }}
+                        <h3>Laba Rugi</h3>
+                        <div class="laba-rugi">
+                            Rp {{ number_format($labaRugi, 2) }}
                         </div>
                     </div>
                 </div>
