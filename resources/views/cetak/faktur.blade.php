@@ -46,7 +46,10 @@ tfoot td {
 <hr>
 <div style="display: flex; justify-content: space-between;">
     <h5>No.Faktur : {{ $transaksi->id }}</h5>
+</br>
     <h5>Tanggal : {{ $transaksi->tanggal }}</h5>
+</br>
+    {{-- <h5>Nama Pelanggan : {{ $transaksi->pelanggan->name }}</h5> --}}
 </div>
     <table border="0">
         <thead>

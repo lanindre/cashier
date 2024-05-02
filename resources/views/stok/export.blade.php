@@ -3,21 +3,15 @@
         <tr>
             <th>No.</th>
             <th>Nama Menu</th>
-            <th>Harga</th>
-            <th>Image</th>
-            <th>Deskripsi</th>
-            <th>Nama Jenis</th>
+            <th>Jumlah</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($menu as $p)
+        @foreach ($stok as $p)
             <tr>
                 <td>{{ $i = !isset($i) ? ($i = 1) : ++$i }}</td>
-                <td>{{ $p->name }}</td>
-                <td>Rp.{{ $p->harga }}</td>
-                <td>{{ $p->Image }}</td>
-                <td>{{ $p->deskripsi }}</td>
-                <td>{{ $p->jenis->name }}</td>
+                <td>{{ $p->menu->name }}</td>
+                <td>{{ $p->jumlah }}</td>
             </tr>
         @endforeach
     </tbody>

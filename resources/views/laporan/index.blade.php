@@ -58,7 +58,7 @@
 
 
                 <div class="mt-3">
-                    @include('laporan.data')
+                    {{-- @include('laporan.data') --}}
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

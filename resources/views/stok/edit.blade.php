@@ -9,15 +9,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="menu" class="form-edit">
+                <form method="post" action="stok" class="form-edit">
                     @csrf
                     @method('put')
                     <div class="form-group row">
                         <label for="name" class="col-sm-4 col-form-label">Nama Menu</label>
                         <div class="col-sm-8">
                             <select name="menu_id" id="">
-                                @foreach ($menu as $m => $label)
-                                    <option value="{{ $m }}">{{ $label }}</option>
+                                @foreach ($menu as $id => $label) {{-- Menggunakan $id sebagai value --}}
+                                    <option value="{{ $id }}">{{ $label }}</option>
                                 @endforeach
                             </select>
                             {{-- <input type="text" class="form-control" id="inputEmail13" placeholder="Jenis Barang"

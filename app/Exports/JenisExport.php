@@ -26,7 +26,7 @@ class JenisExport implements FromCollection ,  WithHeadings, WithMapping
     public function headings(): array
     {
         return [
-            'Nama'
+            'Nama Jenis'
         ];
     }
 }

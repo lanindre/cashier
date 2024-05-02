@@ -1,23 +1,21 @@
-<table id="data">
+<table class="table table-compact table-stripped" id="myTable">
     <thead>
         <tr>
             <th>No.</th>
-            <th>Nama Menu</th>
-            <th>Harga</th>
-            <th>Image</th>
-            <th>Deskripsi</th>
-            <th>Nama Jenis</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Nomor Telepon</th>
+            <th>Alamat</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($menu as $p)
+        @foreach ($pelanggan as $p)
             <tr>
                 <td>{{ $i = !isset($i) ? ($i = 1) : ++$i }}</td>
                 <td>{{ $p->name }}</td>
-                <td>Rp.{{ $p->harga }}</td>
-                <td>{{ $p->Image }}</td>
-                <td>{{ $p->deskripsi }}</td>
-                <td>{{ $p->jenis->name }}</td>
+                <td>{{ $p->email }}</td>
+                <td>{{ $p->nomor_telepon }}</td>
+                <td>{{ $p->alamat }}</td>
             </tr>
         @endforeach
     </tbody>
@@ -53,3 +51,4 @@
         background-color: #ffffff;
     }
 </style>
+

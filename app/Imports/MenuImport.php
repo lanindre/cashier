@@ -15,12 +15,13 @@ class MenuImport implements ToCollection, WithHeadingRow
     public function collection(Collection $collection)
     {
         foreach ($collection as $row){
-            if (isset($row['name_menu'])) {
+            if (isset($row['Name'])) {
                 Menu::create([
-                    'name' => $row['name_menu'],
-                    'harga' => $row['harga'],
-                    'deskripsi' => $row['deskripsi'],
-                    'jenis_id' => $row['jenis']
+                    'name' => $row['Name'],
+                    'harga' => $row['Harga'],
+                    'image' => $row['Image'],
+                    'deskripsi' => $row['Deskripsi'],
+                    'jenis_id' => $row['Nama_Jenis']
                 ]);
             }
         }

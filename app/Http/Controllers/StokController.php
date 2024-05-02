@@ -28,6 +28,7 @@ class StokController extends Controller
         try {
             $stok = Stok::latest()->get();
             $menu = Menu::pluck('name','id');
+            // dd($menu);
             return view('stok.index', compact('stok', 'menu'));
         } catch (QueryException | Exception | PDOException $error) {
             // $this->failResponse($error->getMessage(), $error->getCode());
@@ -133,10 +134,10 @@ class StokController extends Controller
         $date = date('Y-m-d');
         return Excel::download(new StokExport, $date . 'stok.xlsx');
     }
-    public function generatepdf()
+    public function generatePdf()
     {
         $stok = Stok::all();
-        $pdf = Pdf::loadView('stok.data', compact('stok'));
+        $pdf = Pdf::loadView('stok.export', compact('stok'));
         return $pdf->download('stok.pdf');
     }
 

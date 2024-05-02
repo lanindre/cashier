@@ -53,7 +53,6 @@ class JenisController extends Controller
      */
     public function store(StoreJenisRequest $request)
     {
-
         try {
             DB::beginTransaction();
             $validated = $request->validated();

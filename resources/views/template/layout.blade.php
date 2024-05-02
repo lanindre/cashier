@@ -173,18 +173,20 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
+                    @if (Auth::check() && Auth::user()->level == 1)
                     <li class="nav-item">
                         <div class="d-flex sidebar-profile">
                             <div class="sidebar-profile-image">
                                 {{-- <img src="images/faces/face29.png" alt="image"> --}}
                                 {{-- <span class="sidebar-status-indicator"></span> --}}
                             </div>
+                            
                             <div class="sidebar-profile-name">
                                 <p class="sidebar-name">
-                                    Wulan Indah Restiani
+                                  Wulan Indah Restiani
                                 </p>
                                 <p class="sidebar-designation">
-                                    Welcome
+                                    Admin
                                 </p>
                             </div>
                         </div>
@@ -231,48 +233,48 @@
                             <span class="menu-title">Menu</span>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a href="{{ url('stok') }}" class="nav-link">
                             <i class="fas fa-store menu-icon"></i>
                             <span class="menu-title">Stok</span>
                         </a>
-                    </li> --}}
-                    {{-- <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ url('pelanggan') }}" class="nav-link">
                             <i class="typcn typcn-user menu-icon"></i>
                             <span class="menu-title">Pelanggan</span>
                         </a>
-                    </li> --}}
+                    </li>
                     {{-- <li class="nav-item">
-                        <a href="{{ url('transaksi') }}" class="nav-link">
+                        <a href="{{ url('auth') }}" class="nav-link">
                             <i class=" fas fa-cash-register menu-icon"></i>
-                            <span class="menu-title">Transaksi</span>
+                            <span class="menu-title">User</span>
                         </a>
                     </li> --}}
                     {{-- <li class="nav-item">
-                        <a href="{{ url('meja') }}" class="nav-link">
+                        <a href="{{ url('data') }}" class="nav-link">
                             <i class="fas fa-bell menu-icon"></i>
-                            <span class="menu-title">Meja</span>
+                            <span class="menu-title">Data</span>
                         </a>
                     </li> --}}
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ url('pemesanan') }}" class="nav-link">
                             <i class="typcn typcn-tag menu-icon"></i>
                             <span class="menu-title">Pemesanan</span>
                         </a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item">
                         <a href="{{ url('absensi') }}" class="nav-link">
                             <i class="fas fa-store menu-icon"></i>
                             <span class="menu-title">Absensi</span>
                         </a>
                     </li> --}}
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a href="{{ url('laporan') }}" class="nav-link">
                             <i class="fas fa-store menu-icon"></i>
-                            <span class="menu-title">Laporan Produk</span>
+                            <span class="menu-title">Laporan</span>
                         </a>
-                    </li> --}}
+                    </li>
                     {{-- <li class="nav-item">
                         <a href="{{ url('tentang') }}" class="nav-link">
                             <i class=" typcn typcn-tag menu-icon"></i>
@@ -287,11 +289,67 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('logout') }}" class="nav-link">
-                            {{-- <i class="fas fa-store menu-icon"></i> --}}
-                            <i class="fas fa-arrow-right-from-bracket"></i>
+                            <i class="typcn typcn-chevron-right"></i>
                             <span class="menu-title">Logout</span>
                         </a>
                     </li>
+                    @endif
+                    @if (Auth::check() && Auth::user()->level == 2)
+                    <li class="nav-item">
+                        <div class="d-flex sidebar-profile">
+                            <div class="sidebar-profile-image">
+                                {{-- <img src="images/faces/face29.png" alt="image"> --}}
+                                {{-- <span class="sidebar-status-indicator"></span> --}}
+                            </div>
+                            
+                            <div class="sidebar-profile-name">
+                                <p class="sidebar-name">
+                                    Wulan Indah Restiani
+                                </p>
+                                <p class="sidebar-designation">
+                                    Kashier
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Type to search..."
+                                    aria-label="search" aria-describedby="search">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="search">
+                                        <i class="typcn typcn-zoom"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sidebar-menu-title">Dash menu</p>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}" class="nav-link">
+                            <i class=" typcn typcn-home menu-icon"></i>
+                            <span class="menu-title">Dashboard <span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('pemesanan') }}" class="nav-link">
+                            <i class="typcn typcn-tag menu-icon"></i>
+                            <span class="menu-title">Pemesanan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('logout') }}" class="nav-link">
+                            <i class="typcn typcn-chevron-right"></i>
+                            <span class="menu-title">Logout</span>
+                        </a>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <a href="{{ url('logout') }}" class="nav-link">
+                            <i class="typcn typcn-arrow-forward"></i>
+                            <span class="menu-title">Logout</span>
+                        </a>
+                    </li> --}}
+                    
+                    @endif
                 </ul>
             </nav>
             <!-- partial -->
@@ -316,10 +374,10 @@
                         <!-- Main content -->
                         @yield('content')
                         <!-- /.content -->
-
+                        @include('template.footer');
 
                 </div>
-                @include('template.footer');
+                {{-- @include('template.footer'); --}}
             </div>
         </div>
         <!-- content-wrapper ends -->

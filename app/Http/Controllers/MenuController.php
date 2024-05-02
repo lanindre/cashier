@@ -106,37 +106,26 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMenuRequest $request, $menu)
+    public function update(UpdateMenuRequest $request, Menu $menu)
     {
-        try {
-            DB::beginTransaction();
-            $eMenu = Menu::findOrFail($menu);
-            $validated = $request->validated();
-            $eMenu->update($validated);
-            DB::commit();
-            return redirect()->back()->with('success', ' data berhasil diubah');
-        } catch (\Exception $error) {
-            return redirect()->back()->withErrors(['message' => $error->getMessage()]);
-        };
+        $menu->update($request->all());
 
-    //     $menu->update($request->all());
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
 
-    //     if ($request->hasFile('image')) {
-    //         $file = $request->file('image');
+            if ($file->isValid()) {
+                $file_name = $file->getClientOriginalName(); //nama file asli
+                $file_path = $file->storeAs('menu', $file_name); //nama file asli
 
-    //         if ($file->isValid()) {
-    //             $file_name = $file->getClientOriginalName(); //nama file asli
-    //             $file_path = $file->storeAs('ya', $file_name); //nama file asli
-
-    //             $menu->image = $file_path;
-    //             $menu->save();
-    //             return redirect('menu')->with('success', 'Update data berhasil!');
-    //         } else {
-    //             return redirect('menu')->with('error', 'Gagal mengupdate data gambar!');
-    //         }
-    //     } else {
-    //         return redirect('menu')->with('error', 'Tidak ada gambar yang diunggah');
-    //     }
+                $menu->image = $file_path;
+                $menu->save();
+                return redirect('menu')->with('success', 'Update data berhasil!');
+            } else {
+                return redirect('menu')->with('error', 'Gagal mengupdate data gambar!');
+            }
+        } else {
+            return redirect('menu')->with('error', 'Tidak ada gambar yang diunggah');
+        }
     }
 
     /**
@@ -162,7 +151,7 @@ class MenuController extends Controller
     public function generatePdf()
     {
         $menu = Menu::all();
-        $pdf = Pdf::loadView('menu.export', compact('data'));
+        $pdf = Pdf::loadView('menu.export', compact('menu'));
         return $pdf->download('menu.pdf');
     }
 

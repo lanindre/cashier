@@ -27,4 +27,5 @@ class cekUserLogin
 
         return redirect('login')->with('error', 'you have no priviledge');
     }
+    
 }

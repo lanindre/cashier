@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateStokRequest extends FormRequest
+class UpdateRegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,8 +22,7 @@ class UpdateStokRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'menu_id' => 'required',
-            'jumlah' => 'required|numeric',
+            //
         ];
     }
 }

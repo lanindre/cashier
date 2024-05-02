@@ -7,6 +7,8 @@ use App\Models\Transaksi;
 use App\Http\Requests\TransaksiRequest;
 // use App\Http\Requests\UpdateTransaksiRequest;
 use App\Models\DetailTransaksi;
+use App\Models\Menu;
+use App\Models\Pelanggan;
 use Exception;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\QueryException;
@@ -62,12 +64,14 @@ class TransaksiController extends Controller
 
 
         try {
-
+            
             $last_id = Transaksi::whereDate('tanggal', today())->orderBy('id', 'desc')->first();
             $last_id_number = $last_id ? substr($last_id->id, 8) : 0;
             $noTrans = today()->format('Ymd') . str_pad($last_id_number + 1, 4, '0', STR_PAD_LEFT);
 
             // Membuat transaksi baru
+
+            $pelanggan = Pelanggan::all();
             $transaksi = Transaksi::create([
                 'id' => $noTrans,
                 'tanggal' => today(),
@@ -84,7 +88,12 @@ class TransaksiController extends Controller
                     'jumlah' => $detail['qty'],
                     'subtotal' => $detail['harga'] * $detail['qty']
                 ]);
+
+                // $menu = menu::find($detail['id']);
+                // $menu->stok->jumlah = $menu->stok->jumlah - $detail['qty'];
+                // $menu->stok->save();
             }
+
 
             DB::commit();
             // return $insertTransaksi;

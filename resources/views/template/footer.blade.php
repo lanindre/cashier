@@ -1,4 +1,4 @@
-<footer class="footer fixed-bottom">
+<footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
         <span class="text-center text-sm-left d-block d-sm-inline-block justify-content-center ">Copyright © <a
                 href="https://www.bootstrapdash.com/" target="_blank">bootstrapdash.com</a> 2020</span>
@@ -19,6 +19,7 @@
 <!-- Bootstrap 4 -->
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
 @stack('script')
 <script src="vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->

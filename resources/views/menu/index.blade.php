@@ -41,17 +41,18 @@
                     </div>
                 @endif
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#menuFormModal">
-                    <i class="typcn typcn-plus"></i> 
+                    <i class="typcn typcn-plus"></i>
                     Tambah Data
                 </button>
-                <a href="{{route('D')}}" class="btn btn-success">
-                    <i class="typcn typcn-plus"></i>  Export XSLX
-                  </a>
-                  <a href="{{route('E')}}" class="btn btn-danger">
+                <a href="{{ route('D') }}" class="btn btn-success">
+                    <i class="typcn typcn-plus"></i> Export XSLX
+                </a>
+                <a href="{{ route('E') }}" class="btn btn-danger">
                     <i class=" typcn typcn-export"></i> Export PDF
-                  </a>
-                  <button type="button" class="btn btn-warning btn-import" data-toggle="modal" data-target="#import" enctype="multipart/form-data">
-                    <i class=" typcn typcn-document-add"></i> 
+                </a>
+                <button type="button" class="btn btn-warning btn-import" data-toggle="modal" data-target="#import"
+                    enctype="multipart/form-data">
+                    <i class=" typcn typcn-document-add"></i>
                     IMPORT
                 </button>
                 <div class="mt-3">
@@ -107,18 +108,31 @@
         $(document).ready(function() {
 
             $('#editModal').on('show.bs.modal', function(e) {
-                console.log('oke')
-                let button = $(e.relatedTarget)
-                let jsonObject = JSON.stringify(button.data('json'))
-                let items = JSON.parse(jsonObject)
-                console.log(items)
-                $('#name').val(items.name)
-                $('#harga').val(items.harga)
-                // $('#image').val(items.image)
-                $('#deskripsi').val(items.deskripsi)
-                $('#jenis_id').val(items.jenis_id)
-                $('.form-edit').attr('action', `/menu/${items.id}`)
-            })
+            let button = $(e.relatedTarget);
+            let items = button.data('json');
+            $('#name').val(items.name);
+            $('#harga').val(items.harga);
+            $('#deskripsi').val(items.deskripsi);
+            $('#jenis_id').val(items.jenis_id);
+            $('#image-preview').attr('src', "{{ asset('storage/') }}" + '/' + items.image);
+            $('.form-edit').attr('action', `/menu/${items.id}`);
+        });
+
+            // $('editModal').on('show.bs.modal', function(e) {
+            //     let button = $(e.relatedTarget)
+            //     let id = $(button).data('id')
+            //     let name = $(button).data('name')
+            //     let harga = $(button).data('harga')
+            //     let deskripsi = $(button).data('deskripsi')
+            //     let jenis_id = $(button).data('jenis_id')
+
+            //     $(this).find('#name').val(name)
+            //     $(this).find('#harga').val(harga)
+            //     $(this).find('#deskripsi').val(deskripsi)
+            //     $(this).find('#jenis_id').val(jenis_id)
+
+            //     $('.form-edit').attr('action',`/menu/${id}`)
+            // })
         })
     </script>
 @endpush

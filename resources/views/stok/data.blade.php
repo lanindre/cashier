@@ -11,7 +11,7 @@
         @foreach ($stok as $p)
             <tr>
                 <td>{{ $i = !isset($i) ? ($i = 1) : ++$i }}</td>
-                <td>{{ $p->menu_id}} </td>
+                <td>{{ $p->menu->name}} </td>
                 <td>{{ $p->jumlah }}</td>
                 <td>
                     <button type="button" class="btn btn-primary btn-edit" data-toggle="modal"
